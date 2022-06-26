@@ -94,20 +94,20 @@ const InfoItemValue = styled.span<{ color: string }>`
 interface Props {
     isLoading: boolean;
     color?: Color;
-    growthRate?: string;
+    growthRate?: number;
     flavorText?: string;
-    genderRate?: number;
+    genderRate?: string;
     isLegendary?: boolean;
-    isMyhical?: boolean;
+    isMythical?: boolean;
     types?: Array<Type>;
-    weigth?: number;
+    weight?: number;
     height?: number;
     baseExp?: number;
     abilities?: Array<Ability>;
 }
 
-const About: React.FC<Props> = ({ isLoading, color, growthRate, flavorText, genderRate, isLegendary, isMyhical, types, weigth, height, baseExp, abilities }: Props) => {
-    const rarity = isLegendary ? "Legendary" : isMyhical ? "Mythical" : "Normal";
+const About: React.FC<Props> = ({ isLoading, color, growthRate, flavorText, genderRate, isLegendary, isMythical, types, weight, height, baseExp, abilities }: Props) => {
+    const rarity = isLegendary ? "Legendary" : isMythical ? "Mythical" : "Normal";
 
     return (
         <Base>
@@ -129,7 +129,7 @@ const About: React.FC<Props> = ({ isLoading, color, growthRate, flavorText, gend
                     </InfoItem>
                     <InfoItem>
                         <InfoItemLabel>Weight</InfoItemLabel>
-                        <InfoItemLabel color={mapColorToHex(color?.name)}>{weigth}</InfoItemLabel>
+                        <InfoItemLabel color={mapColorToHex(color?.name)}>{weight}</InfoItemLabel>
                     </InfoItem>
                     <InfoItem>
                         <InfoItemLabel>Gender</InfoItemLabel>
