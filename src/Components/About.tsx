@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "@emotion/styled";
+import styled from "@emotion/styled/macro";
 import { Color, Type, Ability } from "../types";
 import { mapColorToHex, mapTypeToHex } from "../utils";
 import Abilities from "./Abilities";
@@ -42,20 +42,6 @@ const TypeLabel = styled.span`
     font-size: 10px;
 `;
 
-const ImageWrapper = styled.div`
-    width: 100%;
-    height: 160px;
-    display: flex;
-    justify-content: center;
-    align-items: c;
-`;
-
-const Image = styled.img`
-    width: 120px;
-    height: 120px;
-    object-fit: contain;
-`;
-
 const InfpContainerWrapper = styled.div`
     margin-top: 32px;
 `;
@@ -86,17 +72,14 @@ const InfoItemLabel = styled.span`
     font-size: 12px;
 `;
 
-const InfoItemValue = styled.span<{ color: string }>`
-    color: ${({ color }) => color};
-    font-size: 12px;
-`;
-
 interface Props {
     isLoading: boolean;
     color?: Color;
-    growthRate?: number;
+    // growthRate?: number;
+    growthRate?: string;
     flavorText?: string;
-    genderRate?: string;
+    // genderRate?: string;
+    genderRate?: any;
     isLegendary?: boolean;
     isMythical?: boolean;
     types?: Array<Type>;

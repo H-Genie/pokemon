@@ -12,8 +12,7 @@ import useSpecies from "../hooks/useSpecies";
 import { PokemonResponse } from "../types";
 
 type Params = {
-    // id: string;
-    id: any;
+    id: string;
 };
 
 type Tab = "about" | "stats" | "evolution";
@@ -37,7 +36,7 @@ const DetailPage: React.FC = () => {
         }),
         [pokemonResult]
     );
-    const { color, growthRate, flavorText, genderRate, isLegendary, isMythical, evolutionChainUrl } = useMemo(
+    const { color, growthRate, isLegendary, isMythical, evolutionChainUrl } = useMemo(
         () => ({
             color: speciesResult.data?.data.color,
             growthRate: speciesResult.data?.data.growth_rate.name,
@@ -55,10 +54,10 @@ const DetailPage: React.FC = () => {
     return (
         <div>
             <PokemonInfo id={id} name={name} types={types} color={color} />
-            <Tabs tab={selectedTab} onClick={handleClick} color={{ name: "red", url: "" }} />
+            <Tabs tab={selectedTab} onClick={handleClick} color={color} />
             {selectedTab === "about" && (
                 <About
-                    isLoading={pokemonResult.isLoading}
+                    isLoading={pokemonResult.isLoading || speciesResult.isLoading}
                     color={color}
                     genderRate={growthRate}
                     isLegendary={isLegendary}

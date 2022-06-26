@@ -1,11 +1,12 @@
 import React from "react";
-import styled from "@emotion/styled";
+import styled from "@emotion/styled/macro";
+import { Link } from "react-router-dom";
 import { Color } from "../types";
 import { mapColorToHex } from "../utils";
 
 const List = styled.ul`
     list-style: none;
-    margin: 0;
+    margin: 20px 0 0 20px;
     padding: 0;
     display: flex;
 `;
@@ -21,7 +22,7 @@ const TabButton = styled.button<{ active?: boolean; color: string }>`
     border-radius: 8px;
     box-shadow: 6px 4px 14px 5px rgba(0, 0, 0, 0.21);
     padding: 6px 12px;
-    background-color: $fff;
+    background-color: #fff;
     border: none;
     font-size: 16px;
     color: ${({ active, color }) => (active ? color : "#6b7280")};
@@ -34,8 +35,16 @@ interface Props {
 }
 
 const Tabs: React.FC<Props> = ({ tab, onClick, color }: Props) => {
+    console.log(color);
     return (
         <List>
+            <ListItem>
+                <Link to="/">
+                    <TabButton color={mapColorToHex(color?.name)} style={{ backgroundColor: mapColorToHex(color?.name), color: "white" }}>
+                        Home
+                    </TabButton>
+                </Link>
+            </ListItem>
             <ListItem onClick={() => onClick("about")}>
                 <TabButton active={tab === "about"} color={mapColorToHex(color?.name)}>
                     About

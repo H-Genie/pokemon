@@ -5,6 +5,7 @@ import PokemonList from "../Components/PokemonList";
 const Base = styled.div`
     padding: 12px 18px;
     overflow: hidden;
+    position: relative;
 `;
 
 const Title = styled.h1`
@@ -22,7 +23,7 @@ const Description = styled.small`
 `;
 
 const ImageWrapper = styled.div`
-    position: fixed;
+    position: absolute;
     width: 288px;
     height: 288px;
     top: 0;

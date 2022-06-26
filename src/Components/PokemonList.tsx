@@ -1,5 +1,6 @@
 import React from "react";
-import styled from "@emotion/styled";
+import styled from "@emotion/styled/macro";
+import { Link } from "react-router-dom";
 import usePokemon from "../hooks/usePokemon";
 import { ListResponse } from "../types";
 
@@ -22,6 +23,12 @@ const ListItem = styled.li`
 const List = styled.ul`
     margin: 0;
     padding: 0;
+
+    a {
+        display: block;
+        margin-top: 18px;
+        text-decoration: none;
+    }
 `;
 
 const Image = styled.img``;
@@ -72,11 +79,13 @@ const PokemonList: React.FC = () => {
             ) : (
                 <List>
                     {data?.data.results.map((pokemon, index) => (
-                        <ListItem key={pokemon.name}>
-                            <Image src={getIamgeUrl(index + 1)} />
-                            <Name>{pokemon.name}</Name>
-                            <Index>{formatNumbering(index + 1)}</Index>
-                        </ListItem>
+                        <Link to={`/${index + 1}`} key={pokemon.name}>
+                            <ListItem>
+                                <Image src={getIamgeUrl(index + 1)} />
+                                <Name>{pokemon.name}</Name>
+                                <Index>{formatNumbering(index + 1)}</Index>
+                            </ListItem>
+                        </Link>
                     ))}
                 </List>
             )}

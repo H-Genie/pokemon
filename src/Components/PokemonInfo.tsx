@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "@emotion/styled";
+import styled from "@emotion/styled/macro";
 import { mapColorToHex, mapTypeToHex } from "../utils";
 import { Type, Color } from "../types";
 
@@ -10,9 +10,10 @@ const Base = styled.div<{ color?: string }>`
     padding: 20px;
     border-bottom-left-radius: 20%;
     border-bottom-right-radius: 20%;
+    position: relative;
 `;
 
-const ThumbnailImageWrapper = styled.img`
+const ThumbnailImageWrapper = styled.div`
     width: 160px;
     margin-inline: auto;
     margin-block: 24px;
@@ -89,6 +90,7 @@ interface Props {
 
 const PokemonInfo: React.FC<Props> = ({ id, name, types, color }: Props) => {
     const formatNumbering = (index: string): string => `#${index.padStart(3, "0")}`;
+    console.log(color);
 
     return (
         <Base color={mapColorToHex(color?.name)}>

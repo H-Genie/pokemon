@@ -1,17 +1,19 @@
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import DetailPage from "./pages/DetailPage";
-import IndexPage from "./pages/IndexPage";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import "./App.css";
 
-const App: React.FC = () => {
+import IndexPage from "./pages/IndexPage";
+import DetailPage from "./pages/DetailPage";
+
+function App() {
     return (
         <BrowserRouter>
-            <Routes>
-                <Route path="/" element={<IndexPage />} />
-                <Route path="/:id" element={<DetailPage />} />
-            </Routes>
+            <Switch>
+                <Route exact path="/" component={IndexPage} />
+                <Route path="/:id" component={DetailPage} />
+            </Switch>
         </BrowserRouter>
     );
-};
+}
 
 export default App;
