@@ -90,7 +90,6 @@ interface Props {
 
 const PokemonInfo: React.FC<Props> = ({ id, name, types, color }: Props) => {
     const formatNumbering = (index: string): string => `#${index.padStart(3, "0")}`;
-    console.log(color);
 
     return (
         <Base color={mapColorToHex(color?.name)}>
@@ -98,7 +97,7 @@ const PokemonInfo: React.FC<Props> = ({ id, name, types, color }: Props) => {
                 <Image src="/assets/pocketball.svg" />
             </ImageWrapper>
             <InfoWrapper>
-                <Name>{name}</Name>
+                <Name>{name !== "undefined / undefined" ? name : ""}</Name>
                 <Index>{formatNumbering(id)}</Index>
             </InfoWrapper>
             <TypeList>

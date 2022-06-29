@@ -48,7 +48,7 @@ interface Props {
 
 const Evolution: React.FC<Props> = ({ color, url }: Props) => {
     const { isSuccess, data } = useEvolutionChain(url);
-    const [evolutionChain, setEvolutionChain] = useState<Array<{ from: { name: string; url: string }; to: { name: string; url: string }; level: number }>>([]);
+    const [evolutionChain, setEvolutionChain] = useState<Array<{ from: { name: string; url: string }; to: { name: string; url: string }; level: any }>>([]);
 
     useEffect(() => {
         const makeEvolutionChain = (chain: Chain) => {
@@ -56,7 +56,7 @@ const Evolution: React.FC<Props> = ({ color, url }: Props) => {
                 const [evolvesTo] = chain.evolves_to;
                 const from = chain.species;
                 const to = evolvesTo.species;
-                const level = evolvesTo.evolution_details[0].min_level;
+                const level = evolvesTo.evolution_details.length === 0 ? null : evolvesTo.evolution_details[0].min_level;
 
                 setEvolutionChain((prev) => [...prev, { from, to, level }]);
                 makeEvolutionChain(chain.evolves_to[0]);

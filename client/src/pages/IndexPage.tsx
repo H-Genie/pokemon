@@ -41,8 +41,8 @@ const Image = styled.img`
 const IndexPage: React.FC = () => {
     return (
         <Base>
-            <Title>Pokémon</Title>
-            <Description>The Pokémon contains detailed stats for every creature from the Pokémon games.</Description>
+            <Title>Pocketmon</Title>
+            <Description>The Pocketmon contains detailed stats for every creature from the Pokémon games.</Description>
             <PokemonList />
             <ImageWrapper>
                 <Image src="/assets/pocketball.svg" />

@@ -26,6 +26,7 @@ const TabButton = styled.button<{ active?: boolean; color: string }>`
     border: none;
     font-size: 16px;
     color: ${({ active, color }) => (active ? color : "#6b7280")};
+    cursor: pointer;
 `;
 
 interface Props {
@@ -35,7 +36,6 @@ interface Props {
 }
 
 const Tabs: React.FC<Props> = ({ tab, onClick, color }: Props) => {
-    console.log(color);
     return (
         <List>
             <ListItem>

@@ -62,7 +62,7 @@ const Abilities: React.FC<Props> = ({ color, abilities }) => {
                         data && (
                             <ListItem key={index}>
                                 <Label>{data.data.name}</Label>
-                                <Description>{data.data.effect_entries[1].effect}</Description>
+                                <Description>{data.data.effect_entries[0].language.name === "en" ? data.data.effect_entries[0].effect : data.data.effect_entries[1].effect}</Description>
                             </ListItem>
                         )
                 )}

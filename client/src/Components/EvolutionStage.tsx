@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled/macro";
+import { Link } from "react-router-dom";
 import { Color } from "../types";
 import { mapColorToHex } from "../utils";
 import { usePokemonQueries } from "../hooks/usePokemon";
@@ -25,7 +26,15 @@ const Divider = styled.div`
     margin-top: 4px;
 `;
 
-const ImageWrapper = styled.div``;
+const ImageWrapper = styled.div`
+    text-align: center;
+
+    a {
+        color: #374151;
+        text-decoration: none;
+        cursor: pointer;
+    }
+`;
 
 const Image = styled.img`
     width: 100%;
@@ -54,18 +63,29 @@ interface Props {
 
 const EvolutionStage: React.FC<Props> = ({ level, color, from, to }: Props) => {
     const [prev, next] = usePokemonQueries([from.name, to.name]);
+    console.log(prev);
 
     return (
         <Base>
             <ImageWrapper>
-                <Image src={prev.data?.data.sprites.other["official-artwork"].front_default} />
+                <Link to={`/${prev.data?.data.id}`}>
+                    <Image src={prev.isLoading ? "/assets/loading.gif" : prev.data?.data.sprites.other["official-artwork"].front_default} />
+                    <span>
+                        {prev.data?.data.id}. {prev.data?.data.name}
+                    </span>
+                </Link>
             </ImageWrapper>
             <DividerWrapper>
                 {level && <Text color={mapColorToHex(color?.name)}>{`level : ${level}`}</Text>}
                 <Divider></Divider>
             </DividerWrapper>
             <ImageWrapper>
-                <Image src={next.data?.data.sprites.other["official-artwork"].front_default} />
+                <Link to={`/${next.data?.data.id}`}>
+                    <Image src={next.isLoading ? "/assets/loading.gif" : next.data?.data.sprites.other["official-artwork"].front_default} />
+                    <span>
+                        {next.data?.data.id}. {next.data?.data.name}
+                    </span>
+                </Link>
             </ImageWrapper>
         </Base>
     );

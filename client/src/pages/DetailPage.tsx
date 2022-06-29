@@ -24,9 +24,8 @@ const DetailPage: React.FC = () => {
     const pokemonResult = usePokemon<PokemonResponse>(id);
     const speciesResult = useSpecies(id);
 
-    const { name, types, height, weight, abilities, baseExp, stats } = useMemo(
+    const { types, height, weight, abilities, baseExp, stats } = useMemo(
         () => ({
-            name: pokemonResult.data?.data.name,
             types: pokemonResult.data?.data.types,
             height: pokemonResult.data?.data.height,
             weight: pokemonResult.data?.data.weight,
@@ -36,8 +35,9 @@ const DetailPage: React.FC = () => {
         }),
         [pokemonResult]
     );
-    const { color, growthRate, isLegendary, isMythical, evolutionChainUrl } = useMemo(
+    const { name, color, growthRate, isLegendary, isMythical, evolutionChainUrl } = useMemo(
         () => ({
+            name: `${speciesResult.data?.data.names[2].name} / ${speciesResult.data?.data.names[8].name}`,
             color: speciesResult.data?.data.color,
             growthRate: speciesResult.data?.data.growth_rate.name,
             flavorText: speciesResult.data?.data.flavor_text_entries[0].flavor_text,

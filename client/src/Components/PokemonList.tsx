@@ -74,7 +74,7 @@ const PokemonList: React.FC = () => {
         <Base>
             {isLoading || isError ? (
                 <LoadingWrapper>
-                    <Loading src="/loading.gif" alt="loading"></Loading>
+                    <Loading src="/assets/loading.gif" alt="loading"></Loading>
                 </LoadingWrapper>
             ) : (
                 <List>
